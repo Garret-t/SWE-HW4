@@ -1,4 +1,5 @@
 import unittest
+import cmath
 from volume import cube_volume
 
 class TestVolume(unittest.TestCase):
@@ -7,6 +8,10 @@ class TestVolume(unittest.TestCase):
 
     def test_negative(self):
         self.assertNotEqual(cube_volume(-1,2,3), -6)
+
+    def test_complex(self):
+        self.assertEqual(cube_volume(1,complex(2),3), complex(6))
+        self.assertEqual(cube_volume(complex(1),complex(2),3), 6)
 
     def test_type(self):
         self.assertRaises(TypeError, cube_volume, 'A', '2b', 3)
